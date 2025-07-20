@@ -1,66 +1,51 @@
-# rest-book
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
-If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
+1st way to create quarkus application:
 
-## Running the application in dev mode
+visit :https://code.quarkus.io/
 
-You can run your application in dev mode that enables live coding using:
+fill the required fields and from extensions pick RESTEasy JSON-B
 
-```shell script
-./mvnw quarkus:dev
-```
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at <http://localhost:8080/q/dev/>.
+2nd way through maven :
 
-## Packaging and running the application
+#!/usr/bin/env bash 
+mvn -U io.quarkus:quarkus-maven-plugin:create \
+        -DprojectGroupId=org.agoncal.quarkus.starting \
+        -DprojectArtifactId=rest-book \
+        -DclassName="org.practice.quarkus.BookResource" \
+        -Dpath="/api/books" \
+        -Dextensions="resteasy-jsonb"
 
-The application can be packaged using:
 
-```shell script
-./mvnw package
-```
+It already provides basic get controller,when run output is displayed on
 
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
+http://localhost:8080/api/books
 
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
+check through curl command:
+curl http://localhost:8080/api/books
 
-If you want to build an _über-jar_, execute the following command:
 
-```shell script
-./mvnw package -Dquarkus.package.jar.type=uber-jar
-```
+mvn quarkus:dev
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
+to check dev ui :http://localhost:8080/q/dev/
 
-## Creating a native executable
 
-You can create a native executable using:
+------------------------------------------------
+JAX-RS : Specification for Exposing REST Web Services and Consuming REST Web Services
 
-```shell script
-./mvnw package -Dnative
-```
+contains api like : @GET @POST @Path @PathParam @Produces @Consumes
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
+---------
+CDI: Context and Dependency Injection
 
-```shell script
-./mvnw package -Dnative -Dquarkus.native.container-build=true
-```
+APi : @Inject @Qualifier @ApplicationScoped @RequestScoped @Observes
 
-You can then execute your native executable with: `./target/rest-book-1.0.0-SNAPSHOT-runner`
+---------
+to kill the process in windows:
 
-If you want to learn more about building native executables, please consult <https://quarkus.io/guides/maven-tooling>.
+netstat -ano | findstr :8080
 
-## Related Guides
+taskkill /PID 1234 /F
 
-- RESTEasy Classic JSON-B ([guide](https://quarkus.io/guides/rest-json)): JSON-B serialization support for RESTEasy Classic
-
-## Provided Code
-
-### RESTEasy JAX-RS
-
-Easily start your RESTful Web Services
-
-[Related guide section...](https://quarkus.io/guides/getting-started#the-jax-rs-resources)
+-------
