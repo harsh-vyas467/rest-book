@@ -49,3 +49,28 @@ netstat -ano | findstr :8080
 taskkill /PID 1234 /F
 
 -------
+
+written junit tests
+
+to run tests you can edit configuration and add junit to run it directly 
+or you can simply do mvn test
+
+----------
+
+Microprofile Configuration Api:
+
+Api -> Description
+
+@ConfigProperty ->Binds the injection point with a configured value
+ConfigProvider -> Central class to access a Config
+Config -> Resolves the property value by searchig through all the configuration sources
+ConfigSource ->Provides configuration values from a specific place
+Converter -> Converts a configured values from a String to a Java type 
+
+
+you can store values of variable in application.properties and use @ConfigProperty on that variable and it will get read from application.properties
+
+also we can pass it on runtime , it will have more preference then properties file , you just have to run command like:
+
+mvn quarkus:dev -Dbooks.genre="Information technology"
+

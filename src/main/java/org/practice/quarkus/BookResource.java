@@ -3,6 +3,7 @@ package org.practice.quarkus;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import org.jboss.logging.Logger;
@@ -34,7 +35,9 @@ public class BookResource {
         return bookRepository.countAllBooks();
     }
 
-    public Optional<Book> getBook(Integer id){
+    @GET
+    @Path("{id}")
+    public Optional<Book> getBook(@PathParam("id") Integer id){
         logger.info("Returns a single book with id"+ id);
         return bookRepository.getBook(id);
     }
