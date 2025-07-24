@@ -74,3 +74,10 @@ also we can pass it on runtime , it will have more preference then properties fi
 
 mvn quarkus:dev -Dbooks.genre="Information technology"
 
+-----------------------
+
+Quarkus is highly configurable keys starting with "quarkus." Extensions are configurable
+All in application.properties
+
+to check out configuration options visit : https://quarkus.io/guides/all-config
+
