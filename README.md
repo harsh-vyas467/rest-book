@@ -81,3 +81,17 @@ All in application.properties
 
 to check out configuration options visit : https://quarkus.io/guides/all-config
 
+--------------------------
+
+Quarkus Profiles:
+
+mvn quarkus:dev
+mvn test
+java -jar
+
+mvn quarkus:dev -Dquarkus.profile=staging
+
+
+
+
+
